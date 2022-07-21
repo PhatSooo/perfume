@@ -17,6 +17,12 @@ class Category
         return $this->db->select($query);
     }
 
+    public function list_cate_by_status()
+    {
+        $query = "SELECT * FROM tbl_category WHERE cate_status = 1";
+        return $this->db->select($query);
+    }
+
     public function list_cate_by_ID($id)
     {
         $query = "SELECT * FROM tbl_category WHERE id = $id";

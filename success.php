@@ -1,5 +1,5 @@
 <?php include 'inc/header.php'; ?>
 
-Successfully
+<a href="index.php"><h1 style="text-align: center; color: aqua;">Successfully</h1></a>
 
 <?php include 'inc/footer.php'; ?>

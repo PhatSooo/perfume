@@ -16,7 +16,7 @@ class Customer {
         $user = $data['username'];
         $pass = $data['password'];
 
-        $query = "SELECT * FROM tbl_customer WHERE cus_username = '$user' AND cus_pass = '$pass'";;
+        $query = "SELECT * FROM tbl_customer WHERE cus_username = '$user' AND cus_pass = '$pass'";
         $res = $this->db->select($query);
         if ($res) {
             $val = $res->fetch_assoc();
@@ -26,6 +26,13 @@ class Customer {
             return header('location:index.php');
         }
         else return '<span>Login Failed</span>';
+    }
+
+    public function get_cus_by_id($id)
+    {
+        $query = "SELECT * FROM tbl_customer WHERE id = $id";
+        $res = $this->db->select($query);
+        return $res;
     }
 }
 

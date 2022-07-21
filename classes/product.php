@@ -25,7 +25,7 @@ class Product
 
     public function list_prod_by_Status()
     {
-        $query = "SELECT a.*, b.cate_name FROM tbl_product a INNER JOIN tbl_category b ON a.prod_cateId = b.id WHERE prod_status = 1";
+        $query = "SELECT a.*, b.cate_name FROM tbl_product a INNER JOIN tbl_category b ON a.prod_cateId = b.id WHERE prod_status = 1 AND cate_status = 1";
         return $this->db->select($query);
     }
 

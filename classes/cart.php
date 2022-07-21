@@ -26,10 +26,17 @@ class Cart
         $prod_name = $data['prod_name'];
         $cate_name = $data['cate_name'];
         $prod_price = $data['prod_price'];
-        $query = "INSERT INTO tbl_cart (cart_session,product_id,product_name,cate_name,product_price,prod_img)
-         VALUES ('$session',$prod_id,'$prod_name','$cate_name','$prod_price','$prod_img')";
-        $res = $this->db->insert($query);
-        if ($res)
-            return '<script>window.location = "checkout.php?session='. $session .'"</script>';
+
+        $query = "SELECT * FROM tbl_cart WHERE product_id = $prod_id";
+        $res = $this->db->select($query);
+        if (!$res) {
+            $query = "INSERT INTO tbl_cart (cart_session,product_id,product_name,cate_name,product_price,prod_img)
+            VALUES ('$session',$prod_id,'$prod_name','$cate_name','$prod_price','$prod_img')";
+            $res = $this->db->insert($query);
+            if ($res)
+                return '<script>window.location = "checkout.php?session=' . $session . '"</script>';
+        }
+
+        return '<h6 style="text-align: center;color:red">This Product has been added in Your Cart</h6>';
     }
 }

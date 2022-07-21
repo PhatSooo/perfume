@@ -13,6 +13,7 @@ $cate = new Category();
 $prod = new Product();
 $cart = new Cart();
 $cus = new Customer();
+$order = new Order();
 ?>
 
 <!DOCTYPE html>
@@ -88,11 +89,11 @@ https://templatemo.com/tm-546-sixteen-clothing
                         <?php
                         if (Session::get('cus_login')) {
                         ?>
-                            <div class="dropdown">
-                                <button class="dropdown-toggle" type="button" data-toggle="dropdown">Account
-                                    <span class="caret"></span></button>
+                            <div class="nav-item dropdown">
+                                <li class="dropdown-toggle" style="padding-top:11px;color: burlywood;" type="button" data-toggle="dropdown">Hello, <?= Session::get('cus_name') ?></li>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Edit Infor</a></li>
+                                    <li><a href="ordered.php">Ordered</a></li>
                                     <li><a href="logout.php">Logout</a></li>
                                 </ul>
                             </div>
@@ -102,7 +103,7 @@ https://templatemo.com/tm-546-sixteen-clothing
 
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <div>
-                                <a href="cart.php">
+                                <a href="checkout.php?session=<?= session_id() ?>">
                                     <p class="mb-1">Shopping cart</p>
                                 </a>
                                 <p class="mb-0">You have <?= Session::get('cart') != 0 ? Session::get('cart') : 0 ?> items in your cart</p>
