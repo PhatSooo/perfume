@@ -34,6 +34,22 @@ class Customer {
         $res = $this->db->select($query);
         return $res;
     }
+
+    public function create_customer($data)
+    {
+        if ($data['pass'] != $data['re_pass'])
+            return '<span class="text-danger">Password does not match</span>';
+        $username = $data['username'];
+        $name = $data['name'];
+        $pass = md5($data['pass']);
+        $address = $data['address'];
+        $phone = $data['phone'];
+
+        $query = "INSERT INTO tbl_customer (cus_name,cus_username,cus_pass,cus_address,cus_phone)
+            VALUES ('$name','$username','$pass','$address','$phone')";
+
+        return $this->db->insert($query);
+    }
 }
 
 ?>
