@@ -1,4 +1,4 @@
-<?php include_once '../lib/database.php'; ?>
+<?php include_once  $_SERVER['DOCUMENT_ROOT'].'/perfume/lib/database.php'; ?>
 
 <?php
 
@@ -19,7 +19,13 @@ class Product
 
     public function list_prod_by_ID($id)
     {
-        $query = "SELECT * FROM tbl_product WHERE id = $id";
+        $query = "SELECT a.*, b.cate_name FROM tbl_product a INNER JOIN tbl_category b ON a.prod_cateId = b.id WHERE a.id = $id";
+        return $this->db->select($query);
+    }
+
+    public function list_prod_by_Status()
+    {
+        $query = "SELECT a.*, b.cate_name FROM tbl_product a INNER JOIN tbl_category b ON a.prod_cateId = b.id WHERE prod_status = 1 AND cate_status = 1";
         return $this->db->select($query);
     }
 

@@ -22,4 +22,14 @@ switch ($page) {
         $db->update($query);
         echo '<script>window.location="../admin/list_category.php";</script>';
         break;
+    case 'order':
+        if ($status == 0)
+            $query = "UPDATE tbl_orderdetails SET status = 1 WHERE id = $id";
+        elseif ($status == 1)
+            $query = "UPDATE tbl_orderdetails SET status = 2 WHERE id = $id";
+        else
+            $query = "UPDATE tbl_orderdetails SET status = 3 WHERE id = $id";
+        $db->update($query);
+        echo '<script>window.location="../admin/list_ordered.php";</script>';
+        break;
 }

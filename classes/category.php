@@ -1,4 +1,4 @@
-<?php include_once '../lib/database.php'; ?>
+<?php include_once  $_SERVER['DOCUMENT_ROOT'].'/perfume/lib/database.php'; ?>
 
 <?php
 
@@ -14,6 +14,12 @@ class Category
     public function list_cate()
     {
         $query = "SELECT * FROM tbl_category";
+        return $this->db->select($query);
+    }
+
+    public function list_cate_by_status()
+    {
+        $query = "SELECT * FROM tbl_category WHERE cate_status = 1";
         return $this->db->select($query);
     }
 
