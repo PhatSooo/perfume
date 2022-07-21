@@ -1,4 +1,4 @@
-<?php include_once '../lib/database.php'; ?>
+<?php include_once  $_SERVER['DOCUMENT_ROOT'].'/perfume/lib/database.php'; ?>
 
 <?php
 
